@@ -5,11 +5,15 @@ name: Release
 # drives a new tag + release; routine commits that don't touch
 # the version pass through silently.
 on:
+  # Auto-run on version-bump commits.
   push:
     branches: [master]
     paths:
       - package.json
       - .github/workflows/release.yml
+  # Manual trigger from the GitHub Actions UI (Run workflow button)
+  # and from `gh workflow run release.yml`.
+  workflow_dispatch:
 
 # Avoid double-releases when multiple commits land in quick
 # succession (e.g. a fast-forward).
