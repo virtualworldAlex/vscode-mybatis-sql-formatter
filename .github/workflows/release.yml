@@ -1,0 +1,71 @@
+name: Release
+
+# Triggers on every push to master, but only runs the release job
+# when package.json changes. Bumping the version field is what
+# drives a new tag + release; routine commits that don't touch
+# the version pass through silently.
+on:
+  push:
+    branches: [master]
+    paths:
+      - package.json
+      - .github/workflows/release.yml
+
+# Avoid double-releases when multiple commits land in quick
+# succession (e.g. a fast-forward).
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Tag & release
+    runs-on: ubuntu-latest
+
+    # Creating a tag and a GitHub Release both require `contents: write`.
+    # This is the narrowest scope the job needs.
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          # Need full history so softprops can compute the previous
+          # tag and build the release notes diff.
+          fetch-depth: 0
+
+      - name: Read version from package.json
+        id: pkg
+        run: |
+          VERSION=$(jq -r .version package.json)
+          if [ -z "$VERSION" ] || [ "$VERSION" = "null" ]; then
+            echo "::error::package.json has no version field"
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "Resolved version: $VERSION"
+
+      - name: Skip if tag already exists
+        id: check
+        run: |
+          if git rev-parse "refs/tags/v${{ steps.pkg.outputs.version }}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Tag v${{ steps.pkg.outputs.version }} already exists; nothing to do."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create tag and GitHub release
+        if: steps.check.outputs.exists == 'false'
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "v${{ steps.pkg.outputs.version }}"
+          tag_name: "v${{ steps.pkg.outputs.version }}"
+          # Auto-generate notes from PRs and commits since the previous tag.
+          generate_release_notes: true
+          body: |
+            Release **v${{ steps.pkg.outputs.version }}** of MyBatis SQL Formatter.
+
+            See [CHANGELOG.md](../blob/master/CHANGELOG.md) for the full change log
+            and [README.md](../blob/master/README.md) for usage.

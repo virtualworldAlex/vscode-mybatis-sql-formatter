@@ -1,0 +1,73 @@
+.vscode/**
+.vscode-test/**
+test/**
+src/**
+docs/**
+.omc/**
+.DS_Store
+tsconfig.json
+tsconfig.test.json
+.gitignore
+**/*.map
+# Keep the marketplace-resolution icon (256). The 128/512 variants
+# and the SVG source stay in the repo for designers / README use
+# but are not needed at runtime.
+media/icon.svg
+media/icon-128.png
+media/icon-512.png
+# Keep node_modules (sql-formatter is a runtime dependency),
+# but trim docs/tests/etc from each package to keep .vsix small.
+node_modules/**/test/**
+node_modules/**/tests/**
+node_modules/**/docs/**
+node_modules/**/doc/**
+node_modules/**/example/**
+node_modules/**/examples/**
+node_modules/**/.github/**
+node_modules/**/*.md
+node_modules/**/*.markdown
+node_modules/**/CHANGELOG*
+node_modules/**/HISTORY*
+node_modules/**/README*
+node_modules/**/LICENSE*
+node_modules/**/License*
+node_modules/**/license*
+node_modules/**/.eslintrc*
+node_modules/**/.prettierrc*
+node_modules/**/.editorconfig
+node_modules/**/.npmignore
+node_modules/**/.nycrc*
+node_modules/**/tsconfig*.json
+node_modules/**/*.d.ts
+node_modules/**/*.flow
+node_modules/**/*.map
+node_modules/**/coverage/**
+node_modules/**/.bin
+# We only use the MySQL dialect; trim the other sql-formatter dialects.
+node_modules/sql-formatter/dist/**/plsql.js
+node_modules/sql-formatter/dist/**/plsql.d.ts
+node_modules/sql-formatter/dist/**/plsql.cjs
+node_modules/sql-formatter/dist/**/n1ql.js
+node_modules/sql-formatter/dist/**/n1ql.d.ts
+node_modules/sql-formatter/dist/**/n1ql.cjs
+node_modules/sql-formatter/dist/**/postgresql.js
+node_modules/sql-formatter/dist/**/postgresql.d.ts
+node_modules/sql-formatter/dist/**/postgresql.cjs
+node_modules/sql-formatter/dist/**/bigquery.js
+node_modules/sql-formatter/dist/**/bigquery.d.ts
+node_modules/sql-formatter/dist/**/bigquery.cjs
+node_modules/sql-formatter/dist/**/redshift.js
+node_modules/sql-formatter/dist/**/redshift.d.ts
+node_modules/sql-formatter/dist/**/redshift.cjs
+node_modules/sql-formatter/dist/**/spark.js
+node_modules/sql-formatter/dist/**/spark.d.ts
+node_modules/sql-formatter/dist/**/spark.cjs
+node_modules/sql-formatter/dist/**/sqlite.js
+node_modules/sql-formatter/dist/**/sqlite.d.ts
+node_modules/sql-formatter/dist/**/sqlite.cjs
+node_modules/sql-formatter/dist/**/trino.js
+node_modules/sql-formatter/dist/**/trino.d.ts
+node_modules/sql-formatter/dist/**/trino.cjs
+node_modules/sql-formatter/dist/**/tsql.js
+node_modules/sql-formatter/dist/**/tsql.d.ts
+node_modules/sql-formatter/dist/**/tsql.cjs

@@ -1,0 +1,130 @@
+{
+  "name": "mybatis-sql-formatter",
+  "displayName": "MyBatis SQL Formatter",
+  "description": "Parse, format, and inline MyBatis SQL log blocks (Preparing/Parameters/Row/Total) in the current file",
+  "version": "1.0.0",
+  "icon": "media/icon-256.png",
+  "publisher": "local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/virtualworldAlex/vscode-mybatis-sql-formatter.git"
+  },
+  "bugs": "https://github.com/virtualworldAlex/vscode-mybatis-sql-formatter/issues",
+  "homepage": "https://github.com/virtualworldAlex/vscode-mybatis-sql-formatter#readme",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:mybatisSqlFormatter.formatCurrentDocument",
+    "onCommand:mybatisSqlFormatter.formatSelection",
+    "onCommand:mybatisSqlFormatter.previewCurrentDocument"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "mybatisSqlFormatter.formatCurrentDocument",
+        "title": "MyBatis SQL Formatter: Format Current Document"
+      },
+      {
+        "command": "mybatisSqlFormatter.formatSelection",
+        "title": "MyBatis SQL Formatter: Format Selection"
+      },
+      {
+        "command": "mybatisSqlFormatter.previewCurrentDocument",
+        "title": "MyBatis SQL Formatter: Preview Current Document"
+      }
+    ],
+    "configuration": {
+      "title": "MyBatis SQL Formatter",
+      "properties": {
+        "mybatisSqlFormatter.autoFormat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Insert formatted SQL directly. When false, show Webview preview first."
+        },
+        "mybatisSqlFormatter.indentSize": {
+          "type": "number",
+          "enum": [
+            2,
+            4
+          ],
+          "default": 4,
+          "description": "Indent size for formatted SQL"
+        },
+        "mybatisSqlFormatter.keywordCase": {
+          "type": "string",
+          "enum": [
+            "upper",
+            "lower",
+            "preserve"
+          ],
+          "default": "upper",
+          "description": "Keyword case in formatted SQL"
+        },
+        "mybatisSqlFormatter.paramMode": {
+          "type": "string",
+          "enum": [
+            "inline",
+            "placeholder"
+          ],
+          "default": "inline",
+          "description": "Parameter representation: inline (literal) or placeholder (? with comments)"
+        },
+        "mybatisSqlFormatter.stringQuote": {
+          "type": "string",
+          "enum": [
+            "single",
+            "double"
+          ],
+          "default": "single",
+          "description": "Quote character for string literals"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "mybatisSqlFormatter.formatCurrentDocument",
+        "key": "shift+alt+f",
+        "mac": "shift+option+f",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "mybatisSqlFormatter.formatSelection",
+        "key": "ctrl+k ctrl+m",
+        "mac": "cmd+k cmd+m",
+        "when": "editorTextFocus && editorHasSelection"
+      },
+      {
+        "command": "mybatisSqlFormatter.previewCurrentDocument",
+        "key": "shift+alt+p",
+        "mac": "shift+option+p",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "check": "tsc -p ./ --noEmit && tsc -p ./tsconfig.test.json --noEmit",
+    "test": "vscode-test",
+    "test:unit": "tsx node_modules/mocha/bin/mocha.js --ui tdd test/*.test.ts",
+    "package": "vsce package",
+    "prepublishOnly": "npm run check && npm run test"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/test-electron": "^2.3.0",
+    "typescript": "^5.3.0",
+    "vsce": "^2.15.0",
+    "mocha": "^10.2.0"
+  },
+  "dependencies": {
+    "sql-formatter": "^13.0.0"
+  }
+}

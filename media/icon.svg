@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#0C1E3F"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <linearGradient id="brandV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FB923C"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded background with brand gradient -->
+  <rect width="128" height="128" rx="22" fill="url(#bg)"/>
+
+  <!-- Subtle grid (hint at data) -->
+  <g stroke="#3B82F6" stroke-width="0.5" opacity="0.15">
+    <line x1="0" y1="32" x2="128" y2="32"/>
+    <line x1="0" y1="64" x2="128" y2="64"/>
+    <line x1="0" y1="96" x2="128" y2="96"/>
+    <line x1="32" y1="0" x2="32" y2="128"/>
+    <line x1="64" y1="0" x2="64" y2="128"/>
+    <line x1="96" y1="0" x2="96" y2="128"/>
+  </g>
+
+  <!-- "==>" MyBatis log marker (top) -->
+  <g transform="translate(18, 36)">
+    <text x="0" y="0"
+          font-family="ui-monospace, 'SF Mono', 'Menlo', monospace"
+          font-size="14" font-weight="700" fill="#60A5FA" letter-spacing="1">==&gt;</text>
+  </g>
+
+  <!-- "SQL" big label -->
+  <g transform="translate(18, 64)">
+    <text x="0" y="0"
+          font-family="ui-monospace, 'SF Mono', 'Menlo', monospace"
+          font-size="22" font-weight="800" fill="#FFFFFF" letter-spacing="0.5">SQL</text>
+    <rect x="0" y="6" width="48" height="3" rx="1.5" fill="url(#brand)"/>
+  </g>
+
+  <!-- Big transform arrow (right side) -->
+  <g transform="translate(78, 56)">
+    <path d="M -10 8 L 16 8" stroke="url(#brandV)" stroke-width="4.5"
+          stroke-linecap="round" fill="none"/>
+    <path d="M 10 2 L 18 8 L 10 14" stroke="url(#brandV)" stroke-width="4.5"
+          stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- Bottom: formatted SQL block (3 lines) -->
+  <g transform="translate(18, 96)">
+    <rect x="0" y="0" width="52" height="3" rx="1.5" fill="url(#brand)"/>
+    <rect x="14" y="8" width="42" height="3" rx="1.5" fill="#60A5FA"/>
+    <rect x="14" y="16" width="34" height="3" rx="1.5" fill="#60A5FA"/>
+  </g>
+
+  <!-- Sparkle (top right) -->
+  <g transform="translate(106, 18)" fill="#FCD34D">
+    <path d="M 0 -5 L 1.2 -1.2 L 5 0 L 1.2 1.2 L 0 5 L -1.2 1.2 L -5 0 L -1.2 -1.2 Z"/>
+  </g>
+</svg>
