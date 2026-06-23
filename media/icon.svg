@@ -16,7 +16,7 @@
   </defs>
 
   <!-- Rounded background with brand gradient -->
-  <rect width="128" height="128" rx="22" fill="url(#bg)"/>
+  <rect width="128" height="128" fill="url(#bg)"/>
 
   <!-- Subtle grid (hint at data) -->
   <g stroke="#3B82F6" stroke-width="0.5" opacity="0.15">

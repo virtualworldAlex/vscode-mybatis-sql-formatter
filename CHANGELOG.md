@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.1 (2026-06-22)
+
+### Fixes
+
+- **Icon background transparency** — Marketplace details page was
+  rendering the logo with broken corners because the generated
+  `icon-256.png` was an RGBA PNG with transparent pixels outside the
+  rounded-rect background. Switched the icon source SVG to a square
+  background and re-rendered both `icon-256.png` and `icon-128.png`
+  as fully opaque RGB over the galleryBanner colour.
+
 ## 1.0.0 (2026-06-22)
 
 ### Initial release
