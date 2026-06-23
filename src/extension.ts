@@ -5,7 +5,7 @@ import { takeParseWarnings } from "./parser";
 import { SqlPreviewPanel } from "./webviewProvider";
 import { FormatOptions, FormattedSegment, SelectionInfo } from "./types";
 
-const EXT_NAME = "MyBatis SQL Formatter";
+const EXT_NAME = "MyBatis Log Formatter";
 
 /** Suppress repeated identical warning modals within this many ms. */
 const WARNING_DEDUP_WINDOW_MS = 1500;
@@ -16,15 +16,15 @@ const recentWarnings = new Map<string, number>();
 export function activate(context: vscode.ExtensionContext): void {
   outputChannel = vscode.window.createOutputChannel(EXT_NAME);
 
-  registerCmd(context, "mybatisSqlFormatter.formatCurrentDocument", () =>
+  registerCmd(context, "mybatisLogFormatter.formatCurrentDocument", () =>
     runFormat(undefined),
   );
-  registerCmd(context, "mybatisSqlFormatter.formatSelection", () => {
+  registerCmd(context, "mybatisLogFormatter.formatSelection", () => {
     const sel = getSelectionInfo();
     if (!sel) return;
     runFormat(sel);
   });
-  registerCmd(context, "mybatisSqlFormatter.previewCurrentDocument", () => {
+  registerCmd(context, "mybatisLogFormatter.previewCurrentDocument", () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       warnUser("Please open a file first.");
@@ -91,7 +91,7 @@ function runFormat(selectionInfo: SelectionInfo | undefined): void {
     }
 
     const autoFormat = vscode.workspace
-      .getConfiguration("mybatisSqlFormatter")
+      .getConfiguration("mybatisLogFormatter")
       .get<boolean>("autoFormat", true);
     if (!autoFormat) {
       SqlPreviewPanel.show(editor, result.formatted);
@@ -177,7 +177,7 @@ function getSelectionInfo(): SelectionInfo | undefined {
  * validation needed.
  */
 function readOptions(): FormatOptions {
-  const c = vscode.workspace.getConfiguration("mybatisSqlFormatter");
+  const c = vscode.workspace.getConfiguration("mybatisLogFormatter");
   return {
     indentSize: c.get<2 | 4>("indentSize", 4),
     keywordCase: c.get<FormatOptions["keywordCase"]>("keywordCase", "upper"),
@@ -249,7 +249,7 @@ function shouldEmit(msg: string): boolean {
 function reportError(command: string, err: unknown): void {
   const detail =
     err instanceof Error ? `${err.name}: ${err.message}` : String(err);
-  const prefix = `[mybatis-sql-formatter] ${command} failed:`;
+  const prefix = `[mybatis-log-formatter] ${command} failed:`;
   outputChannel?.appendLine(`${prefix} ${detail}`);
   if (err instanceof Error && err.stack) {
     outputChannel?.appendLine(err.stack);

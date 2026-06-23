@@ -1,4 +1,4 @@
-# MyBatis SQL Formatter
+# MyBatis Log Formatter
 
 ![Logo](media/icon-256.png)
 
@@ -18,9 +18,9 @@ SQL with parameters inlined as literals directly below each block.
    <kbd>Cmd</kbd>+<kbd>K</kbd> <kbd>Cmd</kbd>+<kbd>M</kbd> (Format Selection) /
    <kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>P</kbd> (Preview),
    or open the command palette and run one of:
-   - **MyBatis SQL Formatter: Format Current Document** — formats all blocks in the file
-   - **MyBatis SQL Formatter: Format Selection** — formats the selected text
-   - **MyBatis SQL Formatter: Preview Current Document** — opens a preview Webview
+   - **MyBatis Log Formatter: Format Current Document** — formats all blocks in the file
+   - **MyBatis Log Formatter: Format Selection** — formats the selected text
+   - **MyBatis Log Formatter: Preview Current Document** — opens a preview Webview
 3. Formatted SQL is inserted directly below each detected block, with `?` parameters replaced by literals.
 
 The original log block is preserved untouched. To undo, press <kbd>Cmd</kbd>+<kbd>Z</kbd>.
@@ -29,15 +29,15 @@ The original log block is preserved untouched. To undo, press <kbd>Cmd</kbd>+<kb
 
 | Setting                           | Default  | Description                                          |
 | --------------------------------- | -------- | ---------------------------------------------------- |
-| `mybatisSqlFormatter.autoFormat`  | `true`   | Insert directly, or show Webview preview first       |
-| `mybatisSqlFormatter.indentSize`  | `4`      | Indent size                                          |
-| `mybatisSqlFormatter.keywordCase` | `upper`  | Keyword case                                         |
-| `mybatisSqlFormatter.paramMode`   | `inline` | `inline` (literal) or `placeholder` (`?` + comments) |
-| `mybatisSqlFormatter.stringQuote` | `single` | Quote character for string literals                  |
+| `mybatisLogFormatter.autoFormat`  | `true`   | Insert directly, or show Webview preview first       |
+| `mybatisLogFormatter.indentSize`  | `4`      | Indent size                                          |
+| `mybatisLogFormatter.keywordCase` | `upper`  | Keyword case                                         |
+| `mybatisLogFormatter.paramMode`   | `inline` | `inline` (literal) or `placeholder` (`?` + comments) |
+| `mybatisLogFormatter.stringQuote` | `single` | Quote character for string literals                  |
 
 ## Parameter representation
 
-`mybatisSqlFormatter.paramMode` chooses how parameter values appear in the formatted output.
+`mybatisLogFormatter.paramMode` chooses how parameter values appear in the formatted output.
 
 - `inline` (default) — `?` placeholders are replaced with literal values:
   ```sql

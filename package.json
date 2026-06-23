@@ -1,53 +1,67 @@
 {
-  "name": "mybatis-sql-formatter",
-  "displayName": "MyBatis SQL Formatter",
+  "name": "mybatis-log-formatter",
+  "displayName": "MyBatis Log Formatter",
   "description": "Parse, format, and inline MyBatis SQL log blocks (Preparing/Parameters/Row/Total) in the current file",
   "version": "1.0.0",
   "icon": "media/icon-256.png",
-  "publisher": "local",
+  "publisher": "thevirtualworld",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/virtualworldAlex/vscode-mybatis-sql-formatter.git"
+    "url": "https://github.com/virtualworldAlex/vscode-mybatis-log-formatter.git"
   },
-  "bugs": "https://github.com/virtualworldAlex/vscode-mybatis-sql-formatter/issues",
-  "homepage": "https://github.com/virtualworldAlex/vscode-mybatis-sql-formatter#readme",
+  "bugs": "https://github.com/virtualworldAlex/vscode-mybatis-log-formatter/issues",
+  "homepage": "https://github.com/virtualworldAlex/vscode-mybatis-log-formatter#readme",
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
+  "keywords": [
+    "mybatis",
+    "sql",
+    "sql-formatter",
+    "jdbc",
+    "preparing",
+    "parameters",
+    "java"
+  ],
+  "qna": "https://github.com/virtualworldAlex/vscode-mybatis-log-formatter/issues",
+  "galleryBanner": {
+    "color": "#0F4C81",
+    "theme": "dark"
+  },
   "main": "./out/extension.js",
   "activationEvents": [
-    "onCommand:mybatisSqlFormatter.formatCurrentDocument",
-    "onCommand:mybatisSqlFormatter.formatSelection",
-    "onCommand:mybatisSqlFormatter.previewCurrentDocument"
+    "onCommand:mybatisLogFormatter.formatCurrentDocument",
+    "onCommand:mybatisLogFormatter.formatSelection",
+    "onCommand:mybatisLogFormatter.previewCurrentDocument"
   ],
   "contributes": {
     "commands": [
       {
-        "command": "mybatisSqlFormatter.formatCurrentDocument",
-        "title": "MyBatis SQL Formatter: Format Current Document"
+        "command": "mybatisLogFormatter.formatCurrentDocument",
+        "title": "MyBatis Log Formatter: Format Current Document"
       },
       {
-        "command": "mybatisSqlFormatter.formatSelection",
-        "title": "MyBatis SQL Formatter: Format Selection"
+        "command": "mybatisLogFormatter.formatSelection",
+        "title": "MyBatis Log Formatter: Format Selection"
       },
       {
-        "command": "mybatisSqlFormatter.previewCurrentDocument",
-        "title": "MyBatis SQL Formatter: Preview Current Document"
+        "command": "mybatisLogFormatter.previewCurrentDocument",
+        "title": "MyBatis Log Formatter: Preview Current Document"
       }
     ],
     "configuration": {
-      "title": "MyBatis SQL Formatter",
+      "title": "MyBatis Log Formatter",
       "properties": {
-        "mybatisSqlFormatter.autoFormat": {
+        "mybatisLogFormatter.autoFormat": {
           "type": "boolean",
           "default": true,
           "description": "Insert formatted SQL directly. When false, show Webview preview first."
         },
-        "mybatisSqlFormatter.indentSize": {
+        "mybatisLogFormatter.indentSize": {
           "type": "number",
           "enum": [
             2,
@@ -56,7 +70,7 @@
           "default": 4,
           "description": "Indent size for formatted SQL"
         },
-        "mybatisSqlFormatter.keywordCase": {
+        "mybatisLogFormatter.keywordCase": {
           "type": "string",
           "enum": [
             "upper",
@@ -66,7 +80,7 @@
           "default": "upper",
           "description": "Keyword case in formatted SQL"
         },
-        "mybatisSqlFormatter.paramMode": {
+        "mybatisLogFormatter.paramMode": {
           "type": "string",
           "enum": [
             "inline",
@@ -75,7 +89,7 @@
           "default": "inline",
           "description": "Parameter representation: inline (literal) or placeholder (? with comments)"
         },
-        "mybatisSqlFormatter.stringQuote": {
+        "mybatisLogFormatter.stringQuote": {
           "type": "string",
           "enum": [
             "single",
@@ -88,19 +102,19 @@
     },
     "keybindings": [
       {
-        "command": "mybatisSqlFormatter.formatCurrentDocument",
+        "command": "mybatisLogFormatter.formatCurrentDocument",
         "key": "shift+alt+f",
         "mac": "shift+option+f",
         "when": "editorTextFocus"
       },
       {
-        "command": "mybatisSqlFormatter.formatSelection",
+        "command": "mybatisLogFormatter.formatSelection",
         "key": "ctrl+k ctrl+m",
         "mac": "cmd+k cmd+m",
         "when": "editorTextFocus && editorHasSelection"
       },
       {
-        "command": "mybatisSqlFormatter.previewCurrentDocument",
+        "command": "mybatisLogFormatter.previewCurrentDocument",
         "key": "shift+alt+p",
         "mac": "shift+option+p",
         "when": "editorTextFocus"
@@ -122,7 +136,8 @@
     "@vscode/test-electron": "^2.3.0",
     "typescript": "^5.3.0",
     "vsce": "^2.15.0",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "tsx": "^4.7.0"
   },
   "dependencies": {
     "sql-formatter": "^13.0.0"
