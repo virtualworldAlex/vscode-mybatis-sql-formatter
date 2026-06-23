@@ -1,6 +1,6 @@
 # MyBatis Log Formatter
 
-![Logo](media/icon-256.png)
+![Logo](https://raw.githubusercontent.com/virtualworldAlex/vscode-mybatis-sql-formatter/master/media/icon-256.png)
 
 Format and inline MyBatis SQL log blocks in place. Recognises the standard
 MyBatis JDBC log markers (`==>  Preparing:`, `==>  Parameters:`,
@@ -9,7 +9,7 @@ SQL with parameters inlined as literals directly below each block.
 
 ## Demo
 
-![Workflow demo: before / action / after](media/demo.png)
+![Workflow demo: before / action / after](https://raw.githubusercontent.com/virtualworldAlex/vscode-mybatis-sql-formatter/master/media/demo.png)
 
 ## Usage
 

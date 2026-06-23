@@ -2,7 +2,7 @@
   "name": "mybatis-log-formatter",
   "displayName": "MyBatis Log Formatter",
   "description": "Parse, format, and inline MyBatis SQL log blocks (Preparing/Parameters/Row/Total) in the current file",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "icon": "media/icon-256.png",
   "publisher": "thevirtualworld",
   "license": "MIT",
